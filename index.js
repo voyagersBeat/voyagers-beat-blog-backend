@@ -19,9 +19,15 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
+
+// Dynamically set CORS based on environment
+const frontendUrl = process.env.NODE_ENV === 'production' 
+  ? 'https://voyagersbeat-blog-frontend.onrender.com' 
+  : 'http://localhost:5173'; // Local development URL
+
 app.use(
   cors({
-    origin: "https://voyagersbeat-blog-frontend.onrender.com/", // Update this with your frontend URL for production
+    origin: frontendUrl, // Allow the appropriate frontend URL
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     credentials: true,
   })
