@@ -21,7 +21,7 @@ app.use(bodyParser.json({ limit: "10mb" }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:5173", // Update this with your frontend URL for production
+    origin: "https://voyagersbeat-blog-frontend.onrender.com/", // Update this with your frontend URL for production
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     credentials: true,
   })
