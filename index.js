@@ -49,6 +49,6 @@ app.get("/", (req, res) => {
   res.send("Hey Developer ✔");
 });
 
-app.listen(port, () => {
-  console.log(`App is listening on port ${port}...`);
+app.listen(process.env.PORT || 8080, "0.0.0.0", () => {
+  console.log(`App is listening on port ${process.env.PORT || 8080}...`);
 });
