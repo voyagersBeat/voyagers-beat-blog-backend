@@ -19,8 +19,8 @@ const verifyToken = (req, res, next) => {
     req.role = decode.role;
     next();
   } catch (err) {
-    res.status(401).send({ message: "Invalid token-" });
-    console.log("Invalid token-", err);
+    console.log("Invalid token", err);
+    res.status(401).send({ message: "Invalid token" });
   }
 };
 
