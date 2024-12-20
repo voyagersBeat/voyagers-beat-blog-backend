@@ -12,14 +12,13 @@ const verifyToken = (req, res, next) => {
     const decode = jwt.verify(token, JWT_SECRET);
 
     if (!decode.userId) {
-      return res.status(401).send({ message: "Invalid token user" });
+      return res.status(401).send({ message: "Invalid token" });
     }
 
     req.userId = decode.userId;
     req.role = decode.role;
     next();
   } catch (err) {
-    console.log("Invalid token", err);
     res.status(401).send({ message: "Invalid token" });
   }
 };
