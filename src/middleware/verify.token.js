@@ -4,15 +4,14 @@ const JWT_SECRET = process.env.jwt_SECRET_KEY;
 const verifyToken = (req, res, next) => {
   try {
     const token = req.cookies.token;
-    console.log("token", token);
-    console.log("cookies", cookies);
-    console.log("req", req);
+    console.log("req.cookies:", req.cookies);
 
     if (!token) {
       return res.status(401).send({ message: "No token provided" });
     }
 
     const decode = jwt.verify(token, JWT_SECRET);
+    console.log("Decoded token:", decode);
 
     if (!decode.userId) {
       return res.status(401).send({ message: "Invalid token" });
